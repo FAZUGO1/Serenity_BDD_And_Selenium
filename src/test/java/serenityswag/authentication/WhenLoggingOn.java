@@ -23,23 +23,14 @@ public class WhenLoggingOn extends UIInteractionSteps {
          openUrl("https://www.saucedemo.com/");
 
        // iniciar sesion con usuario específico
-        // driver.findElement(By.cssSelector("[data-test='username']")).sendKeys("standard_user");
-         //driver.findElement(By.cssSelector("[data-test='password']")).sendKeys("secret_sauce");
-         //driver.findElement(By.cssSelector("[data-test='login-button']")).click();
-
-         find("[data-test='username']").sendKeys("standard_user");
-         find("[data-test='password']").sendKeys("secret_sauce");
-         find("[data-test='login-button']").click();
+         $("[data-test='username']").sendKeys("standard_user");
+         $("[data-test='password']").sendKeys("secret_sauce");
+         $("[data-test='login-button']").click();
 
 
 
          // entrar a ver los productos
-       // assertThat(driver.findElement(By.cssSelector("[data-test='title']")).getText())
-         //           .isEqualToIgnoringCase("Products");
-       // assertThat(driver.findElement(By.cssSelector(".title")).getText())
-       //         .isEqualToIgnoringCase("Products");
-
-       assertThat(find(".title").getText()).isEqualToIgnoringCase("Products");
+         assertThat($(".title").getText()).isEqualToIgnoringCase("Products");
 
     }
 
