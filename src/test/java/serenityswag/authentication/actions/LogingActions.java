@@ -7,7 +7,7 @@ import serenityswag.authentication.Users;
 public class LogingActions extends UIInteractionSteps {
 
     @Step("login con usuario {0}")
-    public void asStandarUser() {
+   /* public void asStandarUser() {
 
         openUrl("https://www.saucedemo.com/");
         // iniciar sesion con usuario standar
@@ -32,6 +32,8 @@ public class LogingActions extends UIInteractionSteps {
     }
 
     //*****Refactoring Using credentials********
+
+   */
     public void as(Users user)  {
 
         openUrl("https://www.saucedemo.com/");

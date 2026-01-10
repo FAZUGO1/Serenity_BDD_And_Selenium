@@ -3,6 +3,7 @@ package serenityswag.authentication;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.annotations.Steps;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
@@ -31,8 +32,11 @@ public class WhenLoggingOn {
     public void usuarioPuedeLoguearseenHomePage(){
          login.as(STANDARD_USER);
          // entrar a ver los productos
-         assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products");
-
+        // assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products");
+         // refactoring assertions
+        Serenity.reportThat("En pagina inventory se despliega el header Products",
+                ()-> assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products")
+        );
     }
 
 }
