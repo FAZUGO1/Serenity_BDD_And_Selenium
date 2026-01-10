@@ -31,9 +31,11 @@ public class LogingActions extends UIInteractionSteps {
         openUrl("https://www.saucedemo.com/");
         // iniciar sesion con usuario standar
         //$("[data-test='username']").sendKeys(user.getUsername());
-        find(By.id("user-name")).sendKeys(user.getUsername());
-        $("[data-test='password']").sendKeys(user.getPassword());
-        find("#password").sendKeys(user.getPassword());
+        //find(By.id("user-name")).sendKeys(user.getUsername());
+        find(By.name("user-name")).sendKeys(user.getUsername());
+       // $("[data-test='password']").sendKeys(user.getPassword());
+     //   find("#password").sendKeys(user.getPassword()); // notación Abreviada Find By Id
+        $("[name=password]").sendKeys(user.getPassword());//notacion abrevianda Find By Name
         $("[data-test='login-button']").click();
     }
 }
