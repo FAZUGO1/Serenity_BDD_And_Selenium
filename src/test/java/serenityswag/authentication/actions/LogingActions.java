@@ -33,6 +33,7 @@ public class LogingActions extends UIInteractionSteps {
         //$("[data-test='username']").sendKeys(user.getUsername());
         find(By.id("user-name")).sendKeys(user.getUsername());
         $("[data-test='password']").sendKeys(user.getPassword());
+        find("#password").sendKeys(user.getPassword());
         $("[data-test='login-button']").click();
     }
 }
