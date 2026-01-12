@@ -34,7 +34,7 @@ public class WhenLoggingOn {
          // entrar a ver los productos
         // assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products");
          // refactoring assertions
-        Serenity.reportThat("En pagina inventory se despliega el header Products",
+        Serenity.reportThat("En pagina inventory se despliega el header Products    ",
                 ()-> assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products")
         );
     }
