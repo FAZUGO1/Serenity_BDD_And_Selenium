@@ -1,19 +1,14 @@
 package serenityswag.authentication;
 
 import net.serenitybdd.annotations.Managed;
-import net.serenitybdd.annotations.Step;
 import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.core.Serenity;
-import net.serenitybdd.core.steps.UIInteractionSteps;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
-import net.thucydides.core.annotations.findby.By;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import serenityswag.authentication.actions.LogingActions;
-import serenityswag.inventorypage.InventoryPage;
+import serenityswag.inventory.InventoryPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static serenityswag.authentication.Users.STANDARD_USER;

@@ -1,12 +1,10 @@
-package serenityswag.inventorypage;
+package serenityswag.inventory;
 
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import serenityswag.authentication.Users;
 import serenityswag.authentication.actions.LogingActions;
@@ -21,17 +19,24 @@ public class WhenViewHighligtedProducts {
 
     @Steps
     LogingActions login;
+    ProductsListPageObject productsList;
+    ProductsDitailsPageObject productDetails;
 
-    ProductsListPageobject productsList;
     @Test
     public void shouldDisplayHighLightedProductsOnWelcomePage(){
         login.as(Users.STANDARD_USER);
         List<String> productsOnDisplay = productsList.titles();
         assertThat(productsOnDisplay).hasSize(6)
                 .contains("Sauce Labs Backpack");
-
     }
+    @Test
+    public void shouldDisplayCorrectProductDetailsPage(){
+        login.as(Users.STANDARD_USER);
+        String firstItemName = productsList.titles().get(0);
+        productsList.openProductDetailsFor(firstItemName);
 
+        assertThat(productDetails.productName()).isEqualTo(firstItemName);
+    }
 
 
 }

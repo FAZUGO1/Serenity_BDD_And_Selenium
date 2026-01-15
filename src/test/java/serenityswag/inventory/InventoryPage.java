@@ -1,4 +1,4 @@
-package serenityswag.inventorypage;
+package serenityswag.inventory;
 
 
 import net.serenitybdd.core.pages.PageObject;
