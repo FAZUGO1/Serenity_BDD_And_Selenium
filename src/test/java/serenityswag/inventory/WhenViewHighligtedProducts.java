@@ -36,6 +36,7 @@ public class WhenViewHighligtedProducts {
         productsList.openProductDetailsFor(firstItemName);
 
         assertThat(productDetails.productName()).isEqualTo(firstItemName);
+        productDetails.productImageWithAltValueOf(firstItemName).shouldBeVisible();
     }
 
 
