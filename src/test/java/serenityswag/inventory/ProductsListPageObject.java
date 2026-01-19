@@ -1,6 +1,7 @@
 package serenityswag.inventory;
 
 import net.serenitybdd.core.pages.PageObject;
+import org.assertj.core.api.AbstractBigDecimalAssert;
 import org.openqa.selenium.By;
 
 import java.util.List;
@@ -14,6 +15,12 @@ public class ProductsListPageObject extends PageObject {
 
     public void openProductDetailsFor(String itemName) {
         find(By.linkText(itemName)).click();
+
+    }
+
+    public String imageTextForProducts(String productName) {
+      //return find(By.xpath("//div[@class='inventory_item'][contains(.,'"+productName+"')]//img")).getAttribute("alt");
+      return $("//div[@class='inventory_item'][contains(.,'"+productName+"')]//img").getAttribute("alt");
 
     }
 }

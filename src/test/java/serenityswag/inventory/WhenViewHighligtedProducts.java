@@ -3,6 +3,7 @@ package serenityswag.inventory;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,17 @@ public class WhenViewHighligtedProducts {
         List<String> productsOnDisplay = productsList.titles();
         assertThat(productsOnDisplay).hasSize(6)
                 .contains("Sauce Labs Backpack");
+    }
+
+    @Test
+    public void hightLightedProductsShouldDisplayTheCorrespondingImages(){
+        login.as(Users.STANDARD_USER);
+        List<String> productsOnDisplay = productsList.titles();
+        SoftAssertions softly = new SoftAssertions();
+        productsOnDisplay.forEach(
+                 productName -> softly.assertThat(productsList.imageTextForProducts(productName)).isEqualTo(productName)
+                                 );
+        softly.assertAll();
     }
     @Test
     public void shouldDisplayCorrectProductDetailsPage(){
