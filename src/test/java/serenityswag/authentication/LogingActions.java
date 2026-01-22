@@ -1,9 +1,8 @@
-package serenityswag.authentication.actions;
+package serenityswag.authentication;
 
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.findby.By;
-import serenityswag.authentication.Users;
 
 public class LogingActions extends UIInteractionSteps {
 
@@ -32,10 +31,16 @@ public class LogingActions extends UIInteractionSteps {
         // iniciar sesion con usuario standar
         //$("[data-test='username']").sendKeys(user.getUsername());
         //find(By.id("user-name")).sendKeys(user.getUsername());
-        find(By.name("user-name")).sendKeys(user.getUsername());
+        //find(By.name("user-name")).sendKeys(user.getUsername());
        // $("[data-test='password']").sendKeys(user.getPassword());
      //   find("#password").sendKeys(user.getPassword()); // notación Abreviada Find By Id
-        $("[name=password]").sendKeys(user.getPassword());//notacion abrevianda Find By Name
-        $("[data-test='login-button']").click();
+       //$("[name=password]").sendKeys(user.getPassword());//notacion abrevianda Find By Name
+        //$("[data-test='login-button']").click();
+
+        // despues de refactorizar con login form ojo find=$
+        $(LoginForm.USER_NAME).sendKeys(user.getUsername());
+        $(LoginForm.PASSWORD).sendKeys(user.getPassword());//notacion abrevianda Find By Name
+        $(LoginForm.LOGIN_BUTTON).click();
+
     }
 }
