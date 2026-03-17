@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.findby.By;
 
 public class LogingActions extends UIInteractionSteps {
 
-    @Step("login con usuario {0}")
+    @Step("login con usuario ->{0}")
    /* public void asStandarUser() {
         openUrl("https://www.saucedemo.com/");
         // iniciar sesion con usuario standar
@@ -28,16 +28,22 @@ public class LogingActions extends UIInteractionSteps {
     public void as(Users user)  {
 
         openUrl("https://www.saucedemo.com/");
-        // iniciar sesion con usuario standar
+    /*    // iniciar sesion con usuario standar
         //$("[data-test='username']").sendKeys(user.getUsername());
-        //find(By.id("user-name")).sendKeys(user.getUsername());
+        find(By.id("user-name")).sendKeys(user.getUsername());
         //find(By.name("user-name")).sendKeys(user.getUsername());
        // $("[data-test='password']").sendKeys(user.getPassword());
      //   find("#password").sendKeys(user.getPassword()); // notación Abreviada Find By Id
        //$("[name=password]").sendKeys(user.getPassword());//notacion abrevianda Find By Name
         //$("[data-test='login-button']").click();
+        find(By.id("user-name")).sendKeys(user.getUsername());
+        find(By.id("password")).sendKeys(user.getPassword());
+        find(By.name("login-button")).click();
+*/
 
         // despues de refactorizar con login form ojo find=$
+
+
         $(LoginForm.USER_NAME).sendKeys(user.getUsername());
         $(LoginForm.PASSWORD).sendKeys(user.getPassword());//notacion abrevianda Find By Name
         $(LoginForm.LOGIN_BUTTON).click();

@@ -23,15 +23,17 @@ public class WhenViewHighligtedProducts {
 
     @Steps
     ViewProductDetailsActions viewProductDetails;
-    //ProductsListPageObject productsList;
-   //***** cambiamos ProductsListPageObject XProductList
-    ProductList productsList;
-    ProductsDitails productDetails;
+
+
+    ProductList productList;
+
+    ProductsDetails productDetails;
+
 
     @Test
     public void shouldDisplayHighLightedProductsOnWelcomePage(){
         login.as(Users.STANDARD_USER);
-        List<String> productsOnDisplay = productsList.titles();
+        List<String> productsOnDisplay = productList.titles();
         assertThat(productsOnDisplay).hasSize(6)
                 .contains("Sauce Labs Backpack");
     }
@@ -39,23 +41,21 @@ public class WhenViewHighligtedProducts {
     @Test
     public void hightLightedProductsShouldDisplayTheCorrespondingImages(){
         login.as(Users.STANDARD_USER);
-        List<String> productsOnDisplay = productsList.titles();
+        List<String> productsOnDisplay = productList.titles();
         SoftAssertions softly = new SoftAssertions();
         productsOnDisplay.forEach(
-                 productName -> softly.assertThat(productsList.imageTextForProducts(productName)).isEqualTo(productName)
+                 productName -> softly.assertThat(productList.imageTextForProducts(productName)).isEqualTo(productName)
                                  );
         softly.assertAll();
     }
     @Test
     public void shouldDisplayCorrectProductDetailsPage(){
         login.as(Users.STANDARD_USER);
-        String firstItemName = productsList.titles().get(0);
-       // productsList.openProductDetailsFor(firstItemName);
-        viewProductDetails.forProductWithName(firstItemName);
-
-        assertThat(productDetails.productName()).isEqualTo(firstItemName);
-        productDetails.productImageWithAltValueOf(firstItemName).shouldBeVisible();
+        String ItemName = productList.titles().get(0); //se obtiene el nombre del primer articulo de la lista
+        viewProductDetails.forProductWithName(ItemName);
+        assertThat(productDetails.productName()).isEqualTo(ItemName); //se verifica que el nombre del articulo sea igual al nombre del articulo que se seleccionó
+        productDetails.productImageWithAltValueOf(ItemName).shouldBeVisible();
     }
 
 
-}
+}   
