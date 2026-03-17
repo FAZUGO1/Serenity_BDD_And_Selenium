@@ -2,6 +2,7 @@ package serenityswag.inventory;
 
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
@@ -53,8 +54,12 @@ public class WhenViewHighligtedProducts {
         login.as(Users.STANDARD_USER);
         String ItemName = productList.titles().get(0); //se obtiene el nombre del primer articulo de la lista
         viewProductDetails.forProductWithName(ItemName);
-        assertThat(productDetails.productName()).isEqualTo(ItemName); //se verifica que el nombre del articulo sea igual al nombre del articulo que se seleccionó
-        productDetails.productImageWithAltValueOf(ItemName).shouldBeVisible();
+        Serenity.reportThat("El detalle del producto seleccionado tiene el texto correcto",
+                 () ->  assertThat(productDetails.productName()).isEqualTo(ItemName) //se verifica que el nombre del artículo sea igual al nombre del articulo que se seleccionó
+                       );
+        Serenity.reportThat("La imagen del Producto seleccionado tiene el texto Correcto",
+                 () -> productDetails.productImageWithAltValueOf(ItemName).shouldBeVisible() //se verifica que la imagen del artículo se muestre correctamente, buscando la imagen con el atributo alt igual al nombre del artículo
+                       );
     }
 
 
