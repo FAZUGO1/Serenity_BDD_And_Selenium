@@ -6,6 +6,16 @@ import java.util.List;
 
 public class ProductList extends PageObject {
 
+    public static By addToCartButtonFor(String itemName) {
+              //return By.xpath("//*[normalize-space(text())='" + itemName + "']");
+                return By.xpath(
+                        "//div[normalize-space(text())='" + itemName + "']" +
+                                "/ancestor::div[@data-test='inventory-item']" +
+                                "//button[normalize-space(text())='Add to cart']"
+                );
+
+               }
+
     public List<String> titles() {
        return findAll(".inventory_item_name").textContents();
      }
